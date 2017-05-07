@@ -5,19 +5,16 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class SocialService {
   private s_url = 'http://localhost:8080';
-  private data: any;
   constructor(private http: Http) { }
 
-  getAllPosts(): any {
-    this.data = {'test': 'I hope you don\'t see this.'};
+  getAllPosts(cb): any {
     this.http.get(this.s_url + '/api/userPost')
       .map(res => res.json())
       .subscribe(
         data => {
-          this.data = data;
+          cb(data);
         }
       );
-    return this.data;
   }
 
   getPost(postID: string): any {
