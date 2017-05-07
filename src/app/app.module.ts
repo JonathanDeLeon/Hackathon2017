@@ -25,15 +25,15 @@ import { CreatePostComponent } from './create-post/create-post.component';
     HttpModule,
     RouterModule.forRoot([
       {
-        'path': '/',
+        'path': '',
         component: HomeComponent
       },
       {
-        'path': '/new',
+        'path': 'new',
         component: CreatePostComponent
       },
       {
-        'path': '/post/:id',
+        'path': 'post/:id',
         component: FullPostComponent
       }
     ])
