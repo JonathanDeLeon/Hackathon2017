@@ -8,13 +8,13 @@ export class SocialService {
   constructor(private http: Http) { }
 
   getAllPosts(): any {
-    this.http.get(this.s_url)
+    this.http.get(this.s_url + 'api/userPost')
       .map(res => res.json())
       .subscribe(
         data => { return data; }
       );
   }
 
-  
+
 
 }
