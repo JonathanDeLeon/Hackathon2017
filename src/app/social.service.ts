@@ -7,7 +7,7 @@ export class SocialService {
   private s_url = 'http://localhost:8080';
   constructor(private http: Http) { }
 
-  getAllPosts(cb): any {
+  getAllPosts(cb): void {
     this.http.get(this.s_url + '/api/userPost')
       .map(res => res.json())
       .subscribe(
@@ -17,25 +17,74 @@ export class SocialService {
       );
   }
 
-  getPost(postID: string): any {
+  getPost(postID: string, cb: any): void {
     this.http.get(this.s_url + '/api/userPost/' + postID)
       .map(res => res.json())
       .subscribe(
-        data => { return data; }
+        data => {
+          cb(data);
+        }
       );
   }
 
-  getUserPosts(userID: string): any {
+  getUserPosts(userID: string, cb: any): void {
     this.http.get(this.s_url + '/api/userPost/user/' + userID)
       .map(res => res.json())
       .subscribe(
-        data => { return data; }
+        data => {
+          cb(data);
+        }
       );
   }
 
-  likePost(postID: string): void {
-
+  likePost(postID: string, cb: any): void {
+    this.http.put(this.s_url + '/api/userPost/user/' + postID, {})
+      .map(res => res.json())
+      .subscribe(
+        data => {
+          cb(data);
+        }
+      );
   }
 
+  createPost(post: any, cb: any): void {
+    this.http.post(this.s_url + '/api/userPost/', post)
+      .map(res => res.json())
+      .subscribe(
+        data => {
+          cb(data);
+        }
+      );
+  }
+
+  getComment(commentID: string, cb: any): void {
+    this.http.get(this.s_url + '/api/comment/' + commentID)
+      .map(res => res.json())
+      .subscribe(
+        data => {
+          cb(data);
+        }
+      );
+  }
+
+  getPostComments(postID: string, cb: any): void {
+    this.http.get(this.s_url + '/api/comment/post/' + postID)
+      .map(res => res.json())
+      .subscribe(
+        data => {
+          cb(data);
+        }
+      );
+  }
+
+  getUserComments(userID: string, cb: any): void {
+    this.http.get(this.s_url + '/api/comment/user/' + userID)
+      .map(res => res.json())
+      .subscribe(
+        data => {
+          cb(data);
+        }
+      );
+  }
 
 }
