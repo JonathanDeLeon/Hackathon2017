@@ -6,6 +6,7 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import {RouterModule} from '@angular/router';
+import {SocialService} from "./social.service";
 
 @NgModule({
   declarations: [
@@ -23,7 +24,7 @@ import {RouterModule} from '@angular/router';
       }
     ])
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [ SocialService ],
+  bootstrap: [ AppComponent ]
 })
 export class AppModule { }
