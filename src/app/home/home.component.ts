@@ -18,7 +18,6 @@ export class HomeComponent implements OnInit {
       for(let d of data) {
         this.allPosts.push(d);
       }
-      console.log(this.allPosts);
     } );
   }
 
