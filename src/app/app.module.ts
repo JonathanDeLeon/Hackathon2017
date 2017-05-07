@@ -33,7 +33,7 @@ import { CreatePostComponent } from './create-post/create-post.component';
         component: CreatePostComponent
       },
       {
-        'path': 'post/:id',
+        'path': 'post/:postID',
         component: FullPostComponent
       }
     ])

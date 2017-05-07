@@ -13,6 +13,7 @@ export class PostComponent implements OnInit {
   comments: any[];
   newComment: any = {};
   constructor(private socialService: SocialService, private router: Router) {
+
   }
   getComments(postId: string): any{
     this.socialService.getPostComments(postId, (data) => {

@@ -11,22 +11,15 @@ import {ActivatedRoute} from '@angular/router';
 export class FullPostComponent implements OnInit {
   postID: any;
   post: any;
-  postComments;
-  private subscription: Subscription;
 
-  constructor(private socialservice: SocialService, private activatedRoute: ActivatedRoute) { }
-
-  ngOnInit() {
-    this.subscription = this.activatedRoute.params.subscribe(
-      (param: any) => {
-        this.postID = param['id'];
-        this.socialservice.getPost(this.postID, (data) => {
-          this.post = data;
-        });
-        this.socialservice.getPostComments(this.postID, (data) => {
-          this.postComments = data;
-        });
-      });
+  constructor(private socialservice: SocialService, private activatedRoute: ActivatedRoute) {
+    this.postID = this.activatedRoute.snapshot.params['postID'];
+    console.log(this.postID);
+    this.socialservice.getPost(this.postID, (data) => {
+      this.post = data[0];
+    });
   }
 
+  ngOnInit() {
+  }
 }
