@@ -14,7 +14,6 @@
       <hr>
       <div class="post-comment" *ngFor="let comment of this.comments">
         {{comment.details}}
-
       </div>
       <textarea class="form-control" rows="3" [(ngModel)]="newComment.details"></textarea>
       <button (click)="submitComment()" >Submit Comment</button>

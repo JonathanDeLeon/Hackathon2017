@@ -12,11 +12,10 @@ export class PostComponent implements OnInit {
   comments: any[];
   newComment: any = {};
   constructor(private socialService: SocialService) {
-    this.comments = [];
   }
   getComments(postId: string): any{
-    this.socialService.getPostComments(this.post.postId, (data) => {
-      console.log(data);
+    this.socialService.getPostComments(postId, (data) => {
+      this.comments = [];
       for(let d of data) {
         this.comments.push(d);
       }
@@ -35,6 +34,7 @@ export class PostComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.comments = this.getComments(this.post.postId);
   }
 
 }
