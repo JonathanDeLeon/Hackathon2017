@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {SocialService} from "../social.service";
+import {Router} from "@angular/router";
 
 
 @Component({
@@ -11,7 +12,7 @@ export class PostComponent implements OnInit {
   @Input('data') post: any;
   comments: any[];
   newComment: any = {};
-  constructor(private socialService: SocialService) {
+  constructor(private socialService: SocialService, private router: Router) {
   }
   getComments(postId: string): any{
     this.socialService.getPostComments(postId, (data) => {
@@ -30,7 +31,11 @@ export class PostComponent implements OnInit {
     this.newComment.userId = '0';
     this.newComment.postId = this.post.postId;
     this.newComment.pictureUrl = '';
-    this.socialService.createComment(this.newComment, (data) => {console.log(data); this.newComment = {}});
+    this.socialService.createComment(this.newComment, (data) => {console.log(data); this.newComment = {}; this.getComments(this.post.postId);});
+  }
+
+  navAway() {
+    this.router.navigate(['/post/' + this.post.postID]);
   }
 
   ngOnInit() {

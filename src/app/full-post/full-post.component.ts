@@ -9,7 +9,7 @@ import {ActivatedRoute} from '@angular/router';
   styleUrls: ['./full-post.component.css']
 })
 export class FullPostComponent implements OnInit {
-  @Input('postID') postID;
+  postID: any;
   post: any;
   postComments;
   private subscription: Subscription;

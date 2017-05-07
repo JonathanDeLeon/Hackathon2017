@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import {Http, RequestOptions, Headers} from '@angular/http';
 import 'rxjs/add/operator/map';
 
 @Injectable()
@@ -38,7 +38,9 @@ export class SocialService {
   }
 
   likePost(postID: string, cb: any): void {
-    this.http.put(this.s_url + '/api/userPost/user/' + postID, {})
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: headers });
+    this.http.put(this.s_url + '/api/userPost/user/' + postID, {}, options)
       .map(res => res.json())
       .subscribe(
         data => {
