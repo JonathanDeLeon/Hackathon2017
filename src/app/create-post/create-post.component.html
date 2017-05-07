@@ -1,1 +1,10 @@
-<
+<label>Name: </label>
+<input [(ngModel)]="newPost.name" />
+
+<label>Details: </label>
+<input [(ngModel)]="newPost.details" />
+
+<label>PictureUrl: </label>
+<input [(ngModel)]="newPost.pictureUrl" />
+
+<button (click)="createNewPost()" >Submit Post</button>
