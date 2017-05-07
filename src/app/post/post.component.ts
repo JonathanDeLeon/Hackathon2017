@@ -7,7 +7,7 @@ import {Component, Input, OnInit} from '@angular/core';
   styleUrls: ['./post.component.css']
 })
 export class PostComponent implements OnInit {
-  @Input('data') data: any;
+  @Input('data') post: any;
   constructor() { }
 
   ngOnInit() {

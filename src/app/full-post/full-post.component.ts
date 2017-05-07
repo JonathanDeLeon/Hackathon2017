@@ -1,5 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {SocialService} from "../social.service";
+import {SocialService} from '../social.service';
+import {Subscription} from 'rxjs/Subscription';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-full-post',
@@ -8,18 +10,23 @@ import {SocialService} from "../social.service";
 })
 export class FullPostComponent implements OnInit {
   @Input('postID') postID;
-  postData: any;
+  post: any;
   postComments;
+  private subscription: Subscription;
 
-  constructor(private socialservice: SocialService) { }
+  constructor(private socialservice: SocialService, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
-    this.socialservice.getPost(postID, (data) => {
-      this.postData = data;
-    });
-    this.socialservice.getPostComments(postID, (data) => {
-      this.postComments = data;
-    })
+    this.subscription = this.activatedRoute.params.subscribe(
+      (param: any) => {
+        this.postID = param['id'];
+        this.socialservice.getPost(this.postID, (data) => {
+          this.post = data;
+        });
+        this.socialservice.getPostComments(this.postID, (data) => {
+          this.postComments = data;
+        });
+      });
   }
 
 }

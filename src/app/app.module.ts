@@ -9,13 +9,15 @@ import {RouterModule} from '@angular/router';
 import {SocialService} from "./social.service";
 import { PostComponent } from './post/post.component';
 import { FullPostComponent } from './full-post/full-post.component';
+import { CreatePostComponent } from './create-post/create-post.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     PostComponent,
-    FullPostComponent
+    FullPostComponent,
+    CreatePostComponent
   ],
   imports: [
     BrowserModule,
@@ -23,8 +25,16 @@ import { FullPostComponent } from './full-post/full-post.component';
     HttpModule,
     RouterModule.forRoot([
       {
-        'path': '',
+        'path': '/',
         component: HomeComponent
+      },
+      {
+        'path': '/new',
+        component: CreatePostComponent
+      },
+      {
+        'path': '/post/:id',
+        component: FullPostComponent
       }
     ])
   ],
