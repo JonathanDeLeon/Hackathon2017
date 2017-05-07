@@ -1,0 +1,12 @@
+.post-header .date{
+  font-size: 1rem;
+  color: darkgrey;
+}
+
+.post-footer{
+  background-color: #F6F7F9;
+}
+
+.card.post{
+  margin: 1rem 0;
+}

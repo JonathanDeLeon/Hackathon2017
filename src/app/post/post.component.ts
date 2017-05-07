@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {SocialService} from "../social.service";
 
 
 @Component({
@@ -8,7 +9,19 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class PostComponent implements OnInit {
   @Input('data') post: any;
-  constructor() { }
+  comments: any[];
+  constructor(private socialService: SocialService) {
+    this.comments = [];
+  }
+  getComments(postId: string): any{
+    this.socialService.getPostComments(this.post.postId, (data) => {
+      console.log(data);
+      for(let d of data) {
+        this.comments.push(d);
+      }
+    });
+    console.log(this.comments);
+  }
 
   ngOnInit() {
   }
