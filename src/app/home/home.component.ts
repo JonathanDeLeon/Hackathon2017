@@ -12,7 +12,7 @@ import IPostModel from "../share/IPostModel";
 })
 export class HomeComponent implements OnInit {
   allPosts: any[];
-  constructor(socialService: SocialService) {
+  constructor(private socialService: SocialService) {
     this.allPosts = [];
     socialService.getAllPosts((data) => {
       for(let d of data) {
