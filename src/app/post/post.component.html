@@ -2,35 +2,30 @@
   <div class="card post">
     <div class="card-block">
     <div class="post-header">
-      <h1 (click)="navAway()">{{post.name + post.postId}} <span class="float-right date">{{post.date}}</span></h1>
+      <h1 (click)="navAway()">{{post.name}} <span class="float-right date">{{post.date}}</span></h1>
     </div>
     <div class="post-detail">
-      <p>{{post.details}}</p>
+      <p>
+        {{post.details}}
+        <img class="float-right" [src]="post.pictureUrl" *ngIf="post.hasOwnProperty('pictureUrl')" style="width:300px;">
+      </p>
+      <p *ngIf="post.like > 0">{{post.like + " likes"}}</p>
     </div>
     </div>
     <div class="card-footer">
     <div class="post-footer">
-      <p class="post-likes">{{post.like}}</p>
-      <hr><!--<div class="col-md-6 col-md-offset-3">-->
-  <!--<div class="post-header">-->
-    <!--<h1>{{post?.name}} <span class="pull-right date">{{post?.date}}</span></h1>-->
-  <!--</div>-->
-  <!--<div class="post-detail">-->
-    <!--<p>{{post?.details}}</p>-->
-  <!--</div>-->
-  <!--<div class="post-footer">-->
-    <!--<p>{{post?.like}}</p>-->
-    <!--<form>-->
-      <!--<textarea class="form-control" rows="3"></textarea>-->
-    <!--</form>-->
-  <!--</div>-->
-<!--</div>-->
-
+      <div class="post-likes">
+        <a (click)="likePost()"><i class="fa fa-arrow-up" aria-hidden="true"></i> Like</a>
+      </div>
+      <hr>
       <div class="post-comment" *ngFor="let comment of this.comments">
         {{comment.details}}
+        <p><span class="date">{{comment.date}}</span></p>
+
       </div>
-      <textarea class="form-control" rows="3" [(ngModel)]="newComment.details"></textarea>
-      <button (click)="submitComment()" >Submit Comment</button>
+      <textarea placeholder="Comment..." class="form-control" rows="3" [(ngModel)]="newComment.details"></textarea>
+      <br>
+      <button class="btn btn-primary" (click)="submitComment()" >Submit Comment</button>
     </div>
     </div>
   </div>

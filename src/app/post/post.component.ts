@@ -21,8 +21,11 @@ export class PostComponent implements OnInit {
       for(let d of data) {
         this.comments.push(d);
       }
+      console.log(this.comments);
     });
-    console.log(this.comments);
+  }
+  likePost(): any{
+    this.socialService.likePost(this.post.postId, null);
   }
 
   submitComment(){

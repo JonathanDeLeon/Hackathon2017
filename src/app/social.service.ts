@@ -38,9 +38,9 @@ export class SocialService {
   }
 
   likePost(postID: string, cb: any): void {
-    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let headers = new Headers({ 'Content-Type': 'application/json', 'Accept': 'q=0.8;application/json;q=0.9' });
     let options = new RequestOptions({ headers: headers });
-    this.http.put(this.s_url + '/api/userPost/user/' + postID, {}, options)
+    this.http.put(this.s_url + '/api/userPost/like/' + postID, {'test': 'test'}, options)
       .map(res => res.json())
       .subscribe(
         data => {

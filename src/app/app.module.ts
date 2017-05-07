@@ -10,6 +10,7 @@ import {SocialService} from "./social.service";
 import { PostComponent } from './post/post.component';
 import { FullPostComponent } from './full-post/full-post.component';
 import { CreatePostComponent } from './create-post/create-post.component';
+import { NavBarComponent } from './nav-bar/nav-bar.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { CreatePostComponent } from './create-post/create-post.component';
     HomeComponent,
     PostComponent,
     FullPostComponent,
-    CreatePostComponent
+    CreatePostComponent,
+    NavBarComponent
   ],
   imports: [
     BrowserModule,

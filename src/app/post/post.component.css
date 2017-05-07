@@ -10,3 +10,16 @@
 .card.post{
   margin: 1rem 0;
 }
+
+.post-likes a{
+  color: #1976D2;
+  cursor: pointer;
+}
+.post-comment{
+  margin: 0.5rem 0;
+}
+.post-comment .date{
+  font-size: 0.8rem;
+  color: darkgrey;
+}
+

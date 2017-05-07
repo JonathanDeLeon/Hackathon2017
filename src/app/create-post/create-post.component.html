@@ -1,10 +1,21 @@
-<label>Name: </label>
-<input [(ngModel)]="newPost.name" />
 
-<label>Details: </label>
-<input [(ngModel)]="newPost.details" />
-
-<label>PictureUrl: </label>
-<input [(ngModel)]="newPost.pictureUrl" />
-
-<button (click)="createNewPost()" >Submit Post</button>
+<div class="col-md-6 offset-md-3">
+  <div class="card post">
+    <div class="card-block">
+      <h1>Create a New Post</h1>
+  <div class="form-group">
+    <label for="formGroupExampleInput">Name:</label>
+    <input type="text" class="form-control" id="formGroupExampleInput" [(ngModel)]="newPost.name">
+  </div>
+  <div class="form-group">
+    <label for="formGroupExampleInput2">Details:</label>
+    <input type="text" class="form-control" id="formGroupExampleInput2" [(ngModel)]="newPost.details">
+  </div>
+  <div class="form-group">
+    <label for="formGroupExampleInput3">Picture URL:</label>
+    <input type="text" class="form-control" id="formGroupExampleInput3" [(ngModel)]="newPost.pictureUrl">
+  </div>
+  <button type="submit" class="btn btn-primary" (click)="createNewPost()">Submit Post</button>
+    </div>
+</div>
+</div>
