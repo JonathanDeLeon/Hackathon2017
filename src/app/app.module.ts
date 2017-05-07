@@ -8,12 +8,14 @@ import { HomeComponent } from './home/home.component';
 import {RouterModule} from '@angular/router';
 import {SocialService} from "./social.service";
 import { PostComponent } from './post/post.component';
+import { FullPostComponent } from './full-post/full-post.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    PostComponent
+    PostComponent,
+    FullPostComponent
   ],
   imports: [
     BrowserModule,
