@@ -87,4 +87,14 @@ export class SocialService {
       );
   }
 
+  createComment(post: any, cb: any): void {
+    this.http.post(this.s_url + '/api/comment/', post)
+      .map(res => res.json())
+      .subscribe(
+        data => {
+          cb(data);
+        }
+      );
+  }
+
 }

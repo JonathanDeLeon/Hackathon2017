@@ -19,7 +19,7 @@ export class CreatePostComponent implements OnInit {
     const date = new Date();
     this.newPost.date = (date.getMonth()+1) + '/' + date.getDate() + '/' + date.getFullYear();
     this.newPost.like = 0;
-    this.newPost.userId = '3';
+    this.newPost.userId = '0';
     this.ss.createPost(this.newPost, (data) => {console.log(data); this.router.navigate(['/']);});
   }
 }

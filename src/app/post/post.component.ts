@@ -10,6 +10,7 @@ import {SocialService} from "../social.service";
 export class PostComponent implements OnInit {
   @Input('data') post: any;
   comments: any[];
+  newComment: any = {};
   constructor(private socialService: SocialService) {
     this.comments = [];
   }
@@ -21,6 +22,16 @@ export class PostComponent implements OnInit {
       }
     });
     console.log(this.comments);
+  }
+
+  submitComment(){
+    const date = new Date();
+    this.newComment.date = (date.getMonth()+1) + '/' + date.getDate() + '/' + date.getFullYear();
+    this.newComment.like = 0;
+    this.newComment.userId = '0';
+    this.newComment.postId = this.post.postId;
+    this.newComment.pictureUrl = '';
+    this.socialService.createComment(this.newComment, (data) => {console.log(data); this.newComment = {}});
   }
 
   ngOnInit() {

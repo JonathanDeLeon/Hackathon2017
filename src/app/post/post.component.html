@@ -16,9 +16,8 @@
         {{comment.details}}
 
       </div>
-      <form>
-        <textarea class="form-control" rows="3"></textarea>
-      </form>
+      <textarea class="form-control" rows="3" [(ngModel)]="newComment.details"></textarea>
+      <button (click)="submitComment()" >Submit Comment</button>
     </div>
     </div>
   </div>
